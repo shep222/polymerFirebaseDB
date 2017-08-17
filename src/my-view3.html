@@ -2,6 +2,9 @@
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-view3">
@@ -32,6 +35,13 @@
     <h1>Settings</h1>
 
     <paper-button class="addLocation" on-tap="addLocationCard">Add Location</paper-button>
+    <paper-dropdown-menu id="pxLocation" label="Location">
+        <paper-listbox slot="dropdown-content" class="dropdown-content">
+            <!-- <template is="dom-repeat" items="[[locations]]" as="location"> -->
+            <paper-item>1</paper-item>
+            <!-- </template> -->
+        </paper-listbox>
+    </paper-dropdown-menu>
 
     <paper-dialog id="addLocationCard">
         <!-- <h1>Enter Location</h1> -->
