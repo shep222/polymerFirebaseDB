@@ -1,0 +1,24 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="patient-item.html">
+
+
+<dom-module id="patient-list">
+    <template>
+        <style>
+        </style>
+        <h1>Hello</h1>
+        <template is="dom-repeat" as="patients" items="{{patients}}"  observe="location" filter="{{_filter(filterBy)}}">
+            <patient-item patients="{{patients}}"></patient-item>
+        </template>
+    </template>
+
+    <script>
+        class PatientList extends Polymer.Element {
+            static get is() {
+                return 'patient-list';
+            }
+        }
+
+        window.customElements.define(PatientList.is, PatientList);
+    </script>
+</dom-module>

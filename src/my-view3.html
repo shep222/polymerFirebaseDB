@@ -1,0 +1,66 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-view3">
+  <template>
+      <firebase-query
+              id="locations"
+              path="/locations"
+              data="{{locations}}">
+        </firebase-query>
+
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+
+      .addLocation {
+        background-color: red;
+        color: white;
+      }
+
+
+            paper-dialog {
+                background-color: yellow;
+            }
+    </style>
+    <h1>Settings</h1>
+
+    <paper-button class="addLocation" on-tap="addLocationCard">Add Location</paper-button>
+
+    <paper-dialog id="addLocationCard">
+        <!-- <h1>Enter Location</h1> -->
+        <paper-input id="newLocation" label="Location Name..."></paper-input>
+        <paper-button raised on-tap="addLocation">Create Location</paper-button>
+
+    </paper-dialog>
+  </template>
+
+  <script>
+    class MyView3 extends Polymer.Element {
+      static get is() { return 'my-view3'; }
+
+      addLocationCard() {
+          var body = document.querySelector('body');
+          Polymer.dom(body).appendChild(this.$.addLocationCard);
+          this.$.addLocationCard.open()
+      }
+
+      addLocation() {
+            console.log(this.$.newLocation.value);
+                // this.$.locations.ref.push({
+                //     name: this.$.newLocation.value
+                // })
+                // this.$.newLocation.value = null;
+            }
+
+    }
+
+    window.customElements.define(MyView3.is, MyView3);
+  </script>
+</dom-module>
